@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db1
+
+  config:
+    import: vault://
+
+  cloud:
+    vault:
+      kv:
+        enabled: false
+      uri: http://localhost:8200
+      token: root
+      database:
+        enabled: true
+        backend: database
+        role: static1
+        static-role: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -1,0 +1,5 @@
+docker run -d --cap-add=IPC_LOCK \
+  -e VAULT_DEV_ROOT_TOKEN_ID=root \
+  -p 8200:8200 \
+  --name vault \
+  hashicorp/vault:latest
