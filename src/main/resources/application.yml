@@ -8,14 +8,14 @@ spring:
   cloud:
     vault:
       kv:
-        enabled: false
-      uri: http://localhost:8200
-      token: root
-      database:
         enabled: true
-        backend: database
-        role: static1
-        static-role: true
+        backend: kv_v2
+        application-name: secret1
+      uri: http://localhost:8200
+      authentication: approle
+      app-role:
+        role-id: ec34165f-a180-8c28-fdc5-aa079100ee35
+        secret-id: 79b0b84d-0215-ac9b-e075-43526677bb64
 
 management:
   endpoints:
