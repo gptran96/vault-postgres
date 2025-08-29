@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>vn.com.unit.core</groupId>
+  <artifactId>jcanary-secure-config-aws-adapter</artifactId>
+  <versioning>
+    <lastUpdated>20250623040818</lastUpdated>
+    <snapshot>
+      <timestamp>20250623.040818</timestamp>
+      <buildNumber>2</buildNumber>
+    </snapshot>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0.1-20250623.040818-2</value>
+        <updated>20250623040818</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0.1-20250623.040818-2</value>
+        <updated>20250623040818</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+  <version>1.0.1-SNAPSHOT</version>
+</metadata>

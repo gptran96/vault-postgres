@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import vn.com.unit.core.sec.cfg.adapter.vault.provider.VaultSecretProvider;
 
 import java.util.HashMap;
 import java.util.Map;

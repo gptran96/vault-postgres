@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>vn.com.unit.core</groupId>
+    <artifactId>jcanary-sdk-core-bom</artifactId>
+    <version>1.0.0</version>
+    <name>jcanary-sdk-core-bom</name>
+    <description>Bill of Materials (BOM) for JCanary SDK, defining dependency versions and configurations for consistent use across all modules.</description>
+    <packaging>pom</packaging>
+    <properties>
+        <spring.boot.version>3.4.2</spring.boot.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

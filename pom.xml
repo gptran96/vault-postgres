@@ -27,10 +27,31 @@
         <url/>
     </scm>
     <properties>
-        <java.version>24</java.version>
+        <java.version>21</java.version>
         <spring-cloud.version>2025.0.0</spring-cloud.version>
+        <main.basedir>${project.basedir}</main.basedir>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>vn.com.unit.core</groupId>
+            <artifactId>jcanary-secure-config-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>vn.com.unit.core</groupId>
+            <artifactId>jcanary-secure-config-gcp-adapter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>vn.com.unit.core</groupId>
+            <artifactId>jcanary-secure-config-vault-adapter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>vn.com.unit.core</groupId>
+            <artifactId>jcanary-secure-config-aws-adapter</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -76,6 +97,14 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>vn.com.unit.core</groupId>
+                <artifactId>jcanary-secure-config</artifactId>
+                <version>1.0.1-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
@@ -91,7 +120,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+            </plugin>
         </plugins>
     </build>
-
+    <repositories>
+        <repository>
+            <id>local-repository</id>
+            <name>Local Repository</name>
+            <url>file://${main.basedir}/repository</url>
+        </repository>
+    </repositories>
 </project>
