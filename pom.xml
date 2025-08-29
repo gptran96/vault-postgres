@@ -35,21 +35,25 @@
         <dependency>
             <groupId>vn.com.unit.core</groupId>
             <artifactId>jcanary-secure-config-core</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>vn.com.unit.core</groupId>
             <artifactId>jcanary-secure-config-gcp-adapter</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>vn.com.unit.core</groupId>
             <artifactId>jcanary-secure-config-vault-adapter</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>vn.com.unit.core</groupId>
             <artifactId>jcanary-secure-config-aws-adapter</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>

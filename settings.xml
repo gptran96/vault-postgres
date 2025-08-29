@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+    <!-- localRepository
+      | The path to the local repository maven will use to store artifacts.
+      |
+      | Default: ${user.home}/.m2/repository
+    <localRepository>/path/to/local/repo</localRepository>
+    -->
+
+    <!-- servers
+      | This is a list of servers which are to be used in the build process. Servers are used to
+      | authenticate against remote repositories. The server id must match the id of the repository.
+    -->
+    <servers>
+        <server>
+            <id>maven-private</id>
+            <username>unit</username>
+            <password>iDzXm0jhwSZWinJ</password>
+        </server>
+    </servers>
+
+    <!-- mirrors
+      | This is a list of mirrors which are to be used in the build process. Mirrors are used to
+      | redirect requests for repositories to a different location. The mirror id must match the id of
+      | the repository. The mirrorOf element specifies which repositories are to be mirrored.
+      | The * wildcard matches all repositories, while the ! wildcard excludes a repository
+      | from being mirrored. The mirrorOf element can also be a comma-separated list of repository
+      | ids. The mirrorOf element can also be a regular expression.
+    -->
+    <mirrors>
+        <mirror>
+            <id>maven-private</id>
+            <mirrorOf>*,!local-repository</mirrorOf>
+            <url>https://repo.unit.vn/repository/maven-private/</url>
+        </mirror>
+    </mirrors>
+
+    <!-- profiles
+      | This is a list of profiles which are to be used in the build process. Profiles are used to
+      | customize the build process for different environments. The profile id must match the id of
+      | the profile.
+    -->
+    <profiles>
+        <profile>
+            <id>unit-profile</id>
+            <repositories>
+                <repository>
+                    <id>maven-private</id>
+                    <url>https://repo.unit.vn/repository/maven-private/</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>maven-private</id>
+                    <url>https://repo.unit.vn/repository/maven-private/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <!-- activeProfiles
+      | This is a list of profiles which are to be activated by default. This is the same as specifying
+      | the -P option on the command line, but it is not necessary to specify the profile name on the
+      | command line. The profile id must match the id of the profile.
+    -->
+    <activeProfiles>
+        <activeProfile>unit-profile</activeProfile>
+    </activeProfiles>
+</settings>
