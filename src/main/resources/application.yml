@@ -1,24 +1,10 @@
-spring:
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/db1
-  config:
-    import: vault://
-  cloud:
-    config:
-      lifecycle:
-        enabled: true
-    vault:
-      kv:
-        enabled: true
-        backend: secrets/kv_v2
-        application-name: spring_boot
-      uri: http://localhost:8200
-      authentication: approle
-      app-role:
-        role-id: e752f8cd-c791-dee2-8c88-ca009e3b0eb3
-        secret-id: 28290917-2f77-15a6-fe9d-52289c0cc0a7
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+vault:
+  kv:
+    enabled: true
+    backend: secrets/kv_v2
+    application-name: spring_boot
+  uri: http://localhost:8200
+  app-role:
+    role-id: e752f8cd-c791-dee2-8c88-ca009e3b0eb3
+    secret-id: 28290917-2f77-15a6-fe9d-52289c0cc0a7
+  namespace: /
