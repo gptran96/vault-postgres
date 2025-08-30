@@ -1,0 +1,15 @@
+vault policy write kv_v2-policy - <<EOF
+path "kv_v2/*" {
+  capabilities = ["read", "list"]
+}
+EOF
+
+
+vault write auth/approle/role/kv_v2-role \
+    token_policies="kv_v2-policy" \
+    token_ttl=1h \
+    token_max_ttl=4h
+
+vault read auth/approle/role/kv_v2-role/role-id
+
+vault write -f auth/approle/role/kv_v2-role/secret-id
