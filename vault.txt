@@ -1,15 +1,15 @@
-vault policy write kv_v2-policy - <<EOF
-path "kv_v2/*" {
-  capabilities = ["read", "list"]
+vault policy write spring_boot_policy - <<EOF
+path "secrets/kv_v2/*" {
+  capabilities = ["read", "list", "create", "update", "delete" ]
 }
 EOF
 
 
-vault write auth/approle/role/kv_v2-role \
-    token_policies="kv_v2-policy" \
-    token_ttl=1h \
-    token_max_ttl=4h
+vault write auth/approle/role/spring_boot_approle \
+    token_policies="spring_boot_policy" \
+    token_ttl=10s \
+    token_max_ttl=10s
 
-vault read auth/approle/role/kv_v2-role/role-id
+vault read auth/approle/role/spring_boot_approle/role-id
 
-vault write -f auth/approle/role/kv_v2-role/secret-id
+vault write -f auth/approle/role/spring_boot_approle/secret-id

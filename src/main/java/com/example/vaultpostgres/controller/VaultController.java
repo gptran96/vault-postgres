@@ -19,8 +19,7 @@ public class VaultController {
     @RequestMapping("/view-config")
     public Map<String, String> hello() {
         Map<String, String> map = new HashMap<>();
-        map.put("username", environment.getProperty("spring.datasource.username"));
-        map.put("password", environment.getProperty("spring.datasource.password"));
+        map.put("username", environment.getProperty("username"));
         return map;
     }
 }
