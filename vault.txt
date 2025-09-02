@@ -7,8 +7,8 @@ EOF
 
 vault write auth/approle/role/spring_boot_approle \
     token_policies="spring_boot_policy" \
-    token_ttl=10s \
-    token_max_ttl=10s
+    token_ttl=12s \
+    token_max_ttl=15s
 
 vault read auth/approle/role/spring_boot_approle/role-id
 

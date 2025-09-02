@@ -4,8 +4,8 @@ vault:
     application-name: spring_boot
   uri: http://localhost:8200
   app-role:
-    role-id: e752f8cd-c791-dee2-8c88-ca009e3b0eb3
-    secret-id: 28290917-2f77-15a6-fe9d-52289c0cc0a7
+    role-id: 26853f1a-85b2-8be4-dc94-1e8e48c02eb7
+    secret-id: 433860a1-b217-637a-53c1-38c09f8f1546
   namespace: /
 
 management:
@@ -13,3 +13,8 @@ management:
     web:
       exposure:
         include: '*'
+
+logging:
+  level:
+    org.springframework.vault: DEBUG
+    org.springframework.cloud.vault: DEBUG
