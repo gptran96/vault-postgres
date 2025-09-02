@@ -11,11 +11,15 @@ import org.springframework.core.env.MapPropertySource;
 import org.springframework.vault.core.lease.SecretLeaseContainer;
 import org.springframework.vault.core.lease.domain.RequestedSecret;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Configuration
 @RequiredArgsConstructor
 @Slf4j
 public class VaultPropertyLoader {
     private final VaultPropertyService vaultPropertyService;
+    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss:SSS");
 
     @Value("${vault.kv.backend}")
     private String kvBackend;
@@ -30,10 +34,10 @@ public class VaultPropertyLoader {
     @Bean
     public ApplicationRunner vaultSecretsRegistrar(SecretLeaseContainer container) {
         return args -> {
-            container.addRequestedSecret(RequestedSecret.rotating(kvBackend + "/data/" + kvApplicationName));
+            container.addRequestedSecret(RequestedSecret.rotating(kvBackend + "/" + kvApplicationName));
 
             container.addLeaseListener(event -> {
-                        log.info("Lease Event: {}", event);
+                        log.info("Lease Event: {} time: {}", event, sdf.format(new Date()));
                         vaultPropertyService.reloadProperties();
                     }
             );
