@@ -2,7 +2,6 @@ package com.example.vaultpostgres.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -14,8 +13,6 @@ import org.springframework.vault.client.VaultClients;
 import org.springframework.vault.client.VaultEndpoint;
 import org.springframework.vault.client.VaultEndpointProvider;
 import org.springframework.vault.config.AbstractVaultConfiguration;
-import org.springframework.vault.core.lease.SecretLeaseContainer;
-import org.springframework.vault.core.lease.domain.RequestedSecret;
 
 import java.net.URI;
 
@@ -30,10 +27,7 @@ public class VaultConfig extends AbstractVaultConfiguration {
     private String roleId;
     @Value("${vault.app-role.secret-id}")
     private String secretId;
-    @Value("${vault.kv.backend}")
-    private String kvBackend;
-    @Value("${vault.kv.application-name}")
-    private String kvApplicationName;
+
     @Bean
     @Override
     public VaultEndpoint vaultEndpoint() {
@@ -52,14 +46,5 @@ public class VaultConfig extends AbstractVaultConfiguration {
         return super.restTemplateBuilder(endpointProvider, requestFactory).customizers(restTemplate -> restTemplate.getInterceptors()
                 .add(VaultClients.createNamespaceInterceptor(namespace))
         );
-    }
-
-    @Bean
-    public ApplicationRunner vaultSecretsRegistrar(SecretLeaseContainer container) {
-        return args -> {
-            container.addRequestedSecret(RequestedSecret.renewable(kvBackend + "/data/" + kvApplicationName));
-
-            container.addLeaseListener(event -> System.out.println("Lease Event: " + event));
-        };
     }
 }
