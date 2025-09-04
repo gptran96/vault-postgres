@@ -1,12 +1,12 @@
-vault:
-  kv:
-    backend: secrets/kv_v2
-    application-name: spring_boot
-  uri: http://localhost:8200
-  app-role:
-    role-id: 26853f1a-85b2-8be4-dc94-1e8e48c02eb7
-    secret-id: 433860a1-b217-637a-53c1-38c09f8f1546
-  namespace: /
+#vault:
+#  kv:
+#    backend: secrets/kv_v2
+#    application-name: spring_boot
+#  uri: http://localhost:8200
+#  app-role:
+#    role-id: 26853f1a-85b2-8be4-dc94-1e8e48c02eb7
+#    secret-id: 433860a1-b217-637a-53c1-38c09f8f1546
+#  namespace: /
 
 management:
   endpoints:
@@ -18,3 +18,18 @@ logging:
   level:
     org.springframework.vault: DEBUG
     org.springframework.cloud.vault: DEBUG
+
+spring:
+  config:
+    import: vault://
+  cloud:
+    vault:
+      kv:
+        enabled: true
+        backend: secrets/kv_v2
+        application-name: spring_boot
+      uri: http://localhost:8200
+      authentication: approle
+      app-role:
+        role-id: 26853f1a-85b2-8be4-dc94-1e8e48c02eb7
+        secret-id: 433860a1-b217-637a-53c1-38c09f8f1546
