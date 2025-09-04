@@ -31,5 +31,7 @@ spring:
       uri: http://localhost:8200
       authentication: approle
       app-role:
-        role-id: 26853f1a-85b2-8be4-dc94-1e8e48c02eb7
-        secret-id: 433860a1-b217-637a-53c1-38c09f8f1546
+        role-id: d0d7f440-02fc-24ec-08ce-70255f5fc6ad
+        secret-id: bc42d7c9-aa80-142c-4b9a-781e18079385
+server:
+  port: 8077

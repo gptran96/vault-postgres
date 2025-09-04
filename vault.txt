@@ -14,4 +14,4 @@ vault read auth/approle/role/spring_boot_approle/role-id
 
 vault write -f auth/approle/role/spring_boot_approle/secret-id
 
-vault write auth/approle/login role_id="26853f1a-85b2-8be4-dc94-1e8e48c02eb7" secret_id="433860a1-b217-637a-53c1-38c09f8f1546"
+vault write auth/approle/login role_id="d0d7f440-02fc-24ec-08ce-70255f5fc6ad" secret_id="bc42d7c9-aa80-142c-4b9a-781e18079385"
